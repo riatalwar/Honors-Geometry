@@ -19,3 +19,8 @@ def sort(numbers):
             return [numbers[2], numbers[0], numbers[1]]
         else:
             return [numbers[2], numbers[1], numbers[0]]
+
+def run():
+    numbers = [int(input('Enter an integer: ')) for i in range(3)]
+    sorted = sort(numbers)
+    print(sorted[0], sorted[1], sorted[2])
