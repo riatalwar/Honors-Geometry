@@ -10,5 +10,8 @@ def evaluate(isTired):
     else:
         return "That's not a valid input!"
 
-isTired = input('Are you feeling tired today? ').lower()[0]
-print(evaluate(isTired), '\nHave a wonderful day!')
+def run():
+    isTired = input('Are you feeling tired today? ').lower()[0]
+    print(evaluate(isTired), '\nHave a wonderful day!')
+
+run()
