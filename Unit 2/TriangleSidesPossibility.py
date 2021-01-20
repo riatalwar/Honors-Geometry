@@ -16,3 +16,7 @@ def determine_change(sides):
         sumOfShorter = sum(sides.remove(longest))
         changeNecessary = longest - sumOfShorter
         return 'The shortest side must be increased in length by at least ' + changeNecessary + 'units.'
+
+def run():
+    sides = [int(input('Enter a side length: ')) for i in range(3)]
+    print(determine_change(sides))
