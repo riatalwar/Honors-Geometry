@@ -4,7 +4,7 @@
 
 def is_possible(sides):
     longest = max(sides)
-    sumOfShorter = sum(sides.remove(longest))
+    sumOfShorter = sum(sides) - longest
     return longest < sumOfShorter
 
 def determine_change(sides):
@@ -12,7 +12,7 @@ def determine_change(sides):
         return 'This triangle is possible.'
     else:
         longest = max(sides)
-        sumOfShorter = sum(sides.remove(longest))
+        sumOfShorter = sum(sides) - longest
         changeNecessary = longest - sumOfShorter
         return 'The shortest side must be increased in length by more than ' + str(changeNecessary) + ' units.'
 
@@ -35,3 +35,5 @@ def test_determine_change():
 def test():
     test_is_possible()
     test_determine_change()
+
+test()
