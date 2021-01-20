@@ -15,4 +15,11 @@ def run():
     isTired = input('Are you feeling tired today? ')
     print(evaluate(isTired), '\nHave a wonderful day!')
 
+def test():
+    print(evaluate('Y') == 'Maybe you should try getting some more sleep.')
+    print(evaluate('yes') == 'Maybe you should try getting some more sleep.')
+    print(evaluate('No') == 'You have some excellent sleep habits!')
+    print(evaluate('n') == 'You have some excellent sleep habits!')
+    print(evaluate('dsf') == "That's not a valid input!")
+
 run()
