@@ -59,25 +59,34 @@ def run():
     cx = float(input('x-coordinate of C: '))
     cy = float(input('y-coordinate of C: '))
 
-    # CALCULATIONS
-    # calculate concurrency points -- see functions above for the formulas
-    xCirc, yCirc = calculate_circumcenter(ax, ay, bx, by, cx, cy)
-    xCent, yCent = calculate_centroid(ax, ay, bx, by, cx, cy)
-    xOrth, yOrth = calculate_orthocenter(ax, ay, bx, by, cx, cy)
-
-    # OUTPUTS
-    # print points
+    # CALCULATIONS & OUTPUTS
+    # calculate concurrency points -- see functions above for the formulas &  print points
     print('\nTriangle ABC with A =', (ax, ay), 'B =', (bx, by), 'C =', (cx, cy), 'has')
-    print('its circumcenter at:', (xCirc, yCirc))
-    print('its centroid at:', (xCent, yCent))
-    print('its orthocenter at:', (xOrth, yOrth))
+    try:
+        xCirc, yCirc = calculate_circumcenter(ax, ay, bx, by, cx, cy)
+        print('its circumcenter at:', (xCirc, yCirc))
+    except:
+        xCirc, yCirc = 1, 1
+        print('its circumcenter cannot be calculated')
+    try:
+        xCent, yCent = calculate_centroid(ax, ay, bx, by, cx, cy)
+        print('its centroid at:', (xCent, yCent))
+    except:
+        xCent, yCent = 1, 1
+        print('its centroid cannot be calculated')
+    try:
+        xOrth, yOrth = calculate_orthocenter(ax, ay, bx, by, cx, cy)
+        print('its orthocenter at:', (xOrth, yOrth))
+    except:
+        xOrth, yOrth = 1, 1
+        print('its orthocenter cannot be calculated')
 
     # set plot size and axis
     plt.figure(figsize=(6, 6))
     plt.axis([-10, 10, -10, 10])
     plt.xticks(ticks=[-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10])
     plt.yticks(ticks=[-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10])
-    
+
     # plot triangle and label points
     plt.plot([ax, bx, cx, ax], [ay, by, cy, ay], 'b')
     plt.plot([ax, bx, cx], [ay, by, cy], 'co')
