@@ -13,6 +13,6 @@ in_Q4 = not above_Xaxis and right_of_Yaxis
 
 # OUTPUT
 print("\nIs " + pointAsStr + " in quadrant I? " + str(in_Q1))
-print("\nIs " + pointAsStr + " in quadrant II? " + str(in_Q2))
-print("\nIs " + pointAsStr + " in quadrant III? " + str(in_Q3))
-print("\nIs " + pointAsStr + " in quadrant IV? " + str(in_Q4))
+print("Is " + pointAsStr + " in quadrant II? " + str(in_Q2))
+print("Is " + pointAsStr + " in quadrant III? " + str(in_Q3))
+print("Is " + pointAsStr + " in quadrant IV? " + str(in_Q4))
