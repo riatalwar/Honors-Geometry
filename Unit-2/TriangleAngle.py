@@ -31,7 +31,7 @@ def run():
         angle = find_angle(sides)
         print("The angle is a(n)", angle, "angle.")
     else:
-        print("Invalid triangle")
+        print("Invalid triangle.")
 
 def test():
     print(find_angle([2, 2, 2]) == "acute")
@@ -40,4 +40,4 @@ def test():
     print(find_angle([2, 2, 1]) == "acute")
     print(find_angle([5, 1, 2]) == "obtuse")
 
-test()
+run()
