@@ -16,10 +16,20 @@ def find_angle(sides):
     sides.sort()
     longestSquared = sides[2] ** 2
     legsSquared = sides[0] ** 2 + sides[1] ** 2
-    
+
     if longestSquared >= legsSquared:
         return "obtuse"
     elif longestSquared == legsSquared:
         return "right"
     else:
         return "acute"
+
+def run():
+    sides = [int(input("Enter a side length: ")) for i in range(3)]
+    if is_possible(sides):
+        angle = find_angle(sides)
+        print("The angle is a(n)", angle, "angle.")
+    else:
+        print("Invalid triangle")
+
+run()
