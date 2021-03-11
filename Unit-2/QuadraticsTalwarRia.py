@@ -17,19 +17,24 @@ def QuadSolutions(a, b, c):
     Parameters: the coefficients of the quadratic, linear, and constant terms: (floats)
     Return: message containing number of solutions: (str)
     """
-
-
+    discriminant = b ** 2 - 4 * a * c
+    if discriminant == 0:
+        return "one real solution."
+    elif discriminant > 0:
+        return "two real solutions."
+    else:
+        return "no real solutions."
 
 
 ######### MAIN PROGRAM #########
 
 ## INPUTS
-firstVal=float(input("Type in the coefficient to the x^2 term: "))
-secondVal= "###"
-thirdVal= "###"
+firstVal = float(input("Type in the coefficient to the x^2 term: "))
+secondVal = float(input("Type in the coefficient to the x term: "))
+thirdVal = float(input("Type in the coefficient to the final term: "))
 
 ## CALCULATIONS
-outputMessage = "***Student needs to write and call the function QuadSolutions.***"
+outputMessage = QuadSolutions(firstVal, secondVal, thirdVal)
 
 ## OUTPUTS
 print("The quadratic equation " + str(firstVal) + "x^2 + " + str(secondVal) + "x + " + str(thirdVal) + " = 0 has " + outputMessage)
