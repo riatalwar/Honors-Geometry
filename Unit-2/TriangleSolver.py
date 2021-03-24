@@ -258,12 +258,12 @@ def Results(TriangleSummary):
     if type(TriangleSummary) is str:
         print(TriangleSummary)
     else:
-        print("a: " + TriangleSummary[0])
-        print("b: " + TriangleSummary[1])
-        print("c: " + TriangleSummary[2])
-        print("A: " + TriangleSummary[3])
-        print("B: " + TriangleSummary[4])
-        print("C: " + TriangleSummary[5])
+        print("a:", TriangleSummary[0])
+        print("b:", TriangleSummary[1])
+        print("c:", TriangleSummary[2])
+        print("A:", TriangleSummary[3])
+        print("B:", TriangleSummary[4])
+        print("C:", TriangleSummary[5])
 
 
 ######  MAIN PROGRAM ######
@@ -272,7 +272,7 @@ def Results(TriangleSummary):
 Welcome()
 
 ## INPUTS ##
-#Get a triangle case from the user
+# Get a triangle case from the user
 selectedChoice = UserChoice()
 
 ## CALCULATIONS ##
@@ -280,8 +280,5 @@ selectedChoice = UserChoice()
 TriangleSummary = SolveTriangle(selectedChoice)
 
 ## OUTPUTS ##
-# this print statement just checks to see that the program is getting
-# to this line and that the contents of TriangleSummary are what you expect.
-# this line (below) should NOT be in your final code. It should be replaced by
-# a call to your Results function.
+# This prints the results of the triangle or an error message
 Results(TriangleSummary)
