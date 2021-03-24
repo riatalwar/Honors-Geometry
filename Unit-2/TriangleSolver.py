@@ -1,12 +1,10 @@
-"""
-Honors Geometry
-Triangle Solver Skeleton (v.1.0) 3.22.2020
-"""
+# Ria T., Honors Geometry, 5/7/2021
+# Triangle Solver
+# Determine the missing angles and sides of a triangle
 
 ######  TOOLS ######
 
 ## IMPORT LIBRARIES/MODULES ##
-# math module to use python's trig functions
 import math
 
 ## FUNCTIONS ##
@@ -235,17 +233,19 @@ def SolveTriangle(UserInput):
         a = GetInput("side", "a")
         b = GetInput("side", "b")
         A = GetInput("angle", "A")
+        # Calculate height of the triangle
+        h = Sin(A) * b
         # Check if sides are valid
         if a <= 0 or b <= 0:
             TriangleInfo = "No triangle: one or more given sides are 0 or negative."
         # Check is angle is valid
         elif A <= 0:
             TriangleInfo = "No triangle: one or more given angles are too small or too big."
-        elif False:
+        elif A > 90 and a <= b:
             TriangleInfo = "No triangle: leg a is too short with that non-acute angle A."
-        elif False:
+        elif a < h:
             TriangleInfo = "No triangle: leg a is shorter than the altitude from C"
-        elif False:
+        elif a > h:
             TriangleInfo: "Ambiguous case: two triangles can be formed with this information."
         else:
             TriangleInfo = SSA(a, b, A)
@@ -253,7 +253,7 @@ def SolveTriangle(UserInput):
     return TriangleInfo     # Return a list of the sides and angles or an error message
 
 
-# TODO write a result function here
+# TODO: format the function properly
 def Results(TriangleSummary):
     if type(TriangleSummary) is str:
         print(TriangleSummary)
