@@ -92,9 +92,9 @@ def AAS(A, B, a):
     return: list with the six triangle parts
     """
     C = 180 - A - B
-    # Once you have the final angle, you have the information needed for ASA
+    # Once we have the final angle, we have the information needed for ASA
     x = ASA(B, a, C)
-    # You can take the first two elements returned from the ASA function because a in AAS is c in ASA
+    # We can take the first two elements returned from the ASA function because a in AAS is c in ASA
     return [a, x[0], x[1], A, B, C]
 
 
@@ -105,8 +105,12 @@ def SAS(a, C, b):
     parameters: a = side, C = anfle, b = side
     return: list with the six triangle parts
     """
-    # do some lines of math
-    return [a, b, c, A, B, C]
+    # Use law of cosines to solve for side c
+    c = (a ** 2 + b ** 2 - 2 * a * b * Cos(C)) ** (1/2)
+    # Now that we have all the sides, we can use SSS to solve for the final two angles
+    x = SSS(a, b, c)
+    # Use angles A and B from SSS calculation
+    return [a, b, c, A, x[3], x[4]]
 
 
 # TODO: write a SSA function below.
