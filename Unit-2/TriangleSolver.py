@@ -109,7 +109,7 @@ def SAS(a, C, b):
     # Now that we have all the sides, we can use SSS to solve for the final two angles
     x = SSS(a, b, c)
     # Use angles A and B from SSS calculation
-    return [a, b, c, A, x[3], x[4]]
+    return [a, b, c, x[3], x[4], C]
 
 
 # TODO: write a SSA function below.
@@ -164,7 +164,7 @@ def GetInput(sideAngle, ABC):
     return(float(input("enter " + sideAngle + " " + ABC + ": ")))
 
 
-def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of the "SolveTriangle" function
+def SolveTriangle(UserInput):
     """
     Based on user's choice, returns a message with triangle information OR an error message
     parameters: UserChoice (str)
@@ -184,12 +184,12 @@ def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of 
         else:
             TriangleInfo = SSS(a, b, c)
 
-    elif UserInput == "2": # TODO: implement SAS
+    elif UserInput == "2":
         print("You chose SAS")
         # Get sides and angles
         a = GetInput("side", "a")
-        C = GetInput("side", "C")
-        b = GetInput("angle", "b")
+        C = GetInput("angle", "C")
+        b = GetInput("side", "b")
         # Check if sides are valid
         if a <= 0 or b <= 0:
             TriangleInfo = "No triangle: one or more given sides are 0 or negative."
@@ -232,7 +232,7 @@ def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of 
     elif UserInput == "5": #TODO write SSA function, implement it and call it.
         print("You chose SSA")
         # Get sides and angles
-        a = GetInput("angle", "a")
+        a = GetInput("side", "a")
         b = GetInput("side", "b")
         A = GetInput("angle", "A")
         # Check if sides are valid
@@ -257,6 +257,13 @@ def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of 
 def Results(TriangleSummary):
     if type(TriangleSummary) is str:
         print(TriangleSummary)
+    else:
+        print("a: " + TriangleSummary[0])
+        print("b: " + TriangleSummary[1])
+        print("c: " + TriangleSummary[2])
+        print("A: " + TriangleSummary[3])
+        print("B: " + TriangleSummary[4])
+        print("C: " + TriangleSummary[5])
 
 
 ######  MAIN PROGRAM ######
@@ -277,4 +284,4 @@ TriangleSummary = SolveTriangle(selectedChoice)
 # to this line and that the contents of TriangleSummary are what you expect.
 # this line (below) should NOT be in your final code. It should be replaced by
 # a call to your Results function.
-print(TriangleSummary)   #TODO replace this print statement with a call to your Results function
+Results(TriangleSummary)
