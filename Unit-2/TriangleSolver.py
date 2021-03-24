@@ -92,8 +92,10 @@ def AAS(A, B, a):
     return: list with the six triangle parts
     """
     C = 180 - A - B
-    x = ASA(B, a, C) #TODO: thoroughly explain why and how this line of code works
-    return [a, x[0], x[1], A, B, C] #TODO: thoroughly explain why and how this line of code works
+    # Once you have the final angle, you have the information needed for ASA
+    x = ASA(B, a, C)
+    # You can take the first two elements returned from the ASA function because a in AAS is c in ASA
+    return [a, x[0], x[1], A, B, C]
 
 
 # TODO: write a SAS function below.
