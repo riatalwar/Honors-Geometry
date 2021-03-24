@@ -22,6 +22,7 @@ def Cos(degreeAngle):
     ratio = math.cos(math.radians(degreeAngle))
     return ratio
 
+
 def Sin(degreeAngle):
     """
     Calculates the sine of an angle in degrees
@@ -30,6 +31,7 @@ def Sin(degreeAngle):
     """
     ratio = math.sin(math.radians(degreeAngle))
     return ratio
+
 
 def InverseCos(ratio):
     """
@@ -40,6 +42,7 @@ def InverseCos(ratio):
     angle = math.degrees(math.acos(ratio))
     return angle
 
+
 def InverseSin(ratio):
     """
     Calculates the degree angle measure given a ratio using sine
@@ -48,6 +51,7 @@ def InverseSin(ratio):
     """
     angle = math.degrees(math.asin(ratio))
     return angle
+
 
 def SSS(a, b, c):
     """
@@ -64,6 +68,7 @@ def SSS(a, b, c):
     # return all six pieces of triangle information as a list
     return [a, b, c, A, B, C]
 
+
 def ASA(A, c, B):
     """
     Calculates missing angles and sides in valid ASA scenarios
@@ -79,21 +84,39 @@ def ASA(A, c, B):
     # return all six pieces of triangle information as a list
     return [a, b, c, A, B, C]
 
+
 def AAS(A, B, a):
-    #TODO: Create a docstring for this function in the same format as the previous functions
+    """
+    Calculates missing angles and sides in valid AAS scenarios
+    parameters: A = angle, B = angle, a = side
+    return: list with the six triangle parts
+    """
     C = 180 - A - B
     x = ASA(B, a, C) #TODO: thoroughly explain why and how this line of code works
     return [a, x[0], x[1], A, B, C] #TODO: thoroughly explain why and how this line of code works
 
+
 # TODO: write a SAS function below.
 def SAS(a, C, b):
+    """
+    Calculates missing angles and sides in valid ASA scenarios
+    parameters: a = side, C = anfle, b = side
+    return: list with the six triangle parts
+    """
     # do some lines of math
     return [a, b, c, A, B, C]
 
+
 # TODO: write a SSA function below.
 def SSA(a, b, A):
+    """
+    Calculates missing angles and sides in valid SSA scenarios
+    parameters: a = side, b = side, A = Angle
+    return: list with the six triangle parts
+    """
     # do some lines of math
     return [a, b, c, A, B, C]
+
 
 def Welcome():
     """
@@ -115,6 +138,7 @@ What triangle information do you have?
  (4) AAS
  (5) SSA""")
 
+
 def UserChoice(): #TODO: Add comments to explain important parts of the "UserChoice" function
     """
     Gets a valid choice from the user from a list of triangle scenarios
@@ -130,8 +154,10 @@ def UserChoice(): #TODO: Add comments to explain important parts of the "UserCho
             print("Please enter a number 1 through 5! Try again.")
     return UserInput
 
+
 def GetInput(sideAngle, ABC):
     return(float(input("enter " + sideAngle + " " + ABC + ": ")))
+
 
 def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of the "SolveTriangle" function
     """
@@ -144,7 +170,7 @@ def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of 
         a = GetInput("side", "a")
         b = GetInput("side", "b")
         c = GetInput("side", "c")
-        if a <=0 or b<=0 or c<= 0:
+        if a <= 0 or b <= 0 or c <= 0:
             TriangleInfo = "No triangle: Student needs to write appropriate error message."
         elif a + b <= c or a + c <= b or b + c <= a:
             TriangleInfo = "No triangle: Student needs to write appropriate error message."
@@ -179,10 +205,21 @@ def SolveTriangle(UserInput): #TODO: Add comments to explain important parts of 
         else:
             TriangleInfo = AAS(A, B, a)
 
-    elif UserInput == "5":
-        TriangleInfo = "Option 5 not yet completed." #TODO write SSA function, implement it and call it.
-        
+    elif UserInput == "5": #TODO write SSA function, implement it and call it.
+        print("You chose SSA")
+        a = GetInput("angle", "a")
+        b = GetInput("side", "b")
+        A = GetInput("angle", "A")
+        if a <= 0 or b <= 0:
+            TriangleInfo = "No triangle: Student needs to write appropriate error message."
+        elif A <= 0:
+            TriangleInfo = "No triangle: Student needs to write appropriate error message."
+        else:
+            TriangleInfo = SSA(a, b, A)
+        TriangleInfo = "Option 5 not yet completed."
+
     return TriangleInfo
+
 
 # TODO write a result function here
 def Results(TriangleSummary):
