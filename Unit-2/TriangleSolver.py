@@ -255,12 +255,11 @@ def Results(triangleSummary):
     if type(triangleSummary) is str:
         print(triangleSummary)
     else:
-        print("a:", triangleSummary[0])
-        print("b:", triangleSummary[1])
-        print("c:", triangleSummary[2])
-        print("A:", triangleSummary[3])
-        print("B:", triangleSummary[4])
-        print("C:", triangleSummary[5])
+        print("Results for your triangle ABC:\n\
+               Sides:  a = " + str(triangleSummary[0]) + ", b = 5.69 " + str(triangleSummary[1]) +
+               ", c = " + str(triangleSummary[2]) + "\n\
+               Angles: A = " + str(triangleSummary[3]) + " , B = " + str(triangleSummary[4]) +
+               ", C = " + str(triangleSummary[5]))
 
 
 ######  MAIN PROGRAM ######
