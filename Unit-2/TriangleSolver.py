@@ -175,9 +175,9 @@ def SolveTriangle(userInput):
     if userInput == "1":
         print("You chose SSS")
         # Get sides
-        a = get_input("side", "a")
-        b = get_input("side", "b")
-        c = get_input("side", "c")
+        a = GetInput("side", "a")
+        b = GetInput("side", "b")
+        c = GetInput("side", "c")
         # Check if sides are valid
         if a <= 0 or b <= 0 or c <= 0:
             return "No triangle: one or more given sides are 0 or negative."
@@ -188,9 +188,9 @@ def SolveTriangle(userInput):
     elif userInput == "2":
         print("You chose SAS")
         # Get sides and angles
-        a = get_input("side", "a")
-        C = get_input("angle", "C")
-        b = get_input("side", "b")
+        a = GetInput("side", "a")
+        C = GetInput("angle", "C")
+        b = GetInput("side", "b")
         # Check if sides are valid
         if a <= 0 or b <= 0:
             return "No triangle: one or more given sides are 0 or negative."
@@ -202,9 +202,9 @@ def SolveTriangle(userInput):
     elif userInput == "3":
         print("You chose ASA")
         # Get sides and angles
-        A = get_input("angle", "A")
-        c = get_input("side", "c")
-        B = get_input("angle", "B")
+        A = GetInput("angle", "A")
+        c = GetInput("side", "c")
+        B = GetInput("angle", "B")
         # Check if side is valid
         if c <= 0:
             return "No triangle: one or more given sides are 0 or negative."
@@ -216,9 +216,9 @@ def SolveTriangle(userInput):
     elif userInput == "4":
         print("You chose AAS")
         # Get sides and angles
-        A = get_input("angle", "A")
-        B = get_input("angle", "B")
-        a = get_input("side", "a")
+        A = GetInput("angle", "A")
+        B = GetInput("angle", "B")
+        a = GetInput("side", "a")
         # Check is side is valid
         if a <= 0:
             return "No triangle: one or more given sides are 0 or negative."
@@ -230,9 +230,9 @@ def SolveTriangle(userInput):
     elif userInput == "5":
         print("You chose SSA")
         # Get sides and angles
-        a = get_input("side", "a")
-        b = get_input("side", "b")
-        A = get_input("angle", "A")
+        a = GetInput("side", "a")
+        b = GetInput("side", "b")
+        A = GetInput("angle", "A")
         # Calculate height of the triangle
         h = sin(A) * b
         # Check if sides are valid
