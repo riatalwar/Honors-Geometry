@@ -16,8 +16,8 @@ def Cos(degreeAngle):
     parameters: angle in degrees (float)
     return: cosine of the angle (float)
     """
-    ratio = math.cos(math.radians(degreeAngle))
-    return ratio
+    # I modified this for efficiency so that no variable is necessary
+    return math.cos(math.radians(degreeAngle))
 
 
 def Sin(degreeAngle):
@@ -26,8 +26,8 @@ def Sin(degreeAngle):
     parameters: angle in degrees (float)
     return: sine of the angle (float)
     """
-    ratio = math.sin(math.radians(degreeAngle))
-    return ratio
+    # I modified this for efficiency so that no variable is necessary
+    return math.sin(math.radians(degreeAngle))
 
 
 def InverseCos(ratio):
@@ -36,8 +36,8 @@ def InverseCos(ratio):
     parameters: ratio (float)
     return: angle in degrees (float)
     """
-    angle = math.degrees(math.acos(ratio))
-    return angle
+    # I modified this for efficiency so that no variable is necessary
+    return math.degrees(math.acos(ratio))
 
 
 def InverseSin(ratio):
@@ -46,8 +46,8 @@ def InverseSin(ratio):
     parameters: ratio (float)
     return: angle in degrees (float)
     """
-    angle = math.degrees(math.asin(ratio))
-    return angle
+    # I modified this for efficiency so that no variable is necessary
+    return math.degrees(math.asin(ratio))
 
 
 # Triangle solver functions
@@ -110,7 +110,6 @@ def SAS(a, C, b):
     return [a, b, c, x[3], x[4], C]
 
 
-# TODO: write a SSA function below.
 def SSA(a, b, A):
     """
     Calculates missing angles and sides in valid SSA scenarios
@@ -151,122 +150,117 @@ def UserChoice():
     parameters: none
     return: a response from the list of numerical choices (str)
     """
-    ValidChoice = False                                     # Tracks whether user input is valid
-    while ValidChoice == False:                             # While invalid input
-        UserInput = input("Select an option 1 through 5: ") # Get user input
-        if UserInput in ['1', '2', '3', '4', '5']:
-            ValidChoice = True                              # If input is from 1 - 5 then it is valid
-        else:                                               # If invalid print error message and repeat
-            print("Please enter a number 1 through 5! Try again.")
-    return UserInput
+    # I modified the original code to make it more efficient
+    # This way, there is no need to have a variable tracking the validity
+    while True:
+        userInput = input("Select an option 1 through 5: ") # Get user input
+        if userInput in ['1', '2', '3', '4', '5']:
+            return userInput                                # If input is from 1 - 5 then it is valid and can be returned
+        # If invalid print error message and repeat
+        print("Please enter a number 1 through 5! Try again.")
 
 
 def GetInput(sideAngle, ABC):
     return(float(input("enter " + sideAngle + " " + ABC + ": ")))
 
 
-def SolveTriangle(UserInput):
+def SolveTriangle(userInput):
     """
     Based on user's choice, returns a message with triangle information OR an error message
     parameters: UserChoice (str)
     return: all sides and angles (list) or error message (str)
     """
-    if UserInput == "1":
+    # I modified this function for efficiency
+    # This way, the else clause is eliminated and there is one less variable needed
+    if userInput == "1":
         print("You chose SSS")
         # Get sides
-        a = GetInput("side", "a")
-        b = GetInput("side", "b")
-        c = GetInput("side", "c")
+        a = get_input("side", "a")
+        b = get_input("side", "b")
+        c = get_input("side", "c")
         # Check if sides are valid
         if a <= 0 or b <= 0 or c <= 0:
-            TriangleInfo = "No triangle: one or more given sides are 0 or negative."
+            return "No triangle: one or more given sides are 0 or negative."
         elif a + b <= c or a + c <= b or b + c <= a:
-            TriangleInfo = "No triangle: triangle inequality is not satisfied."
-        else:
-            TriangleInfo = SSS(a, b, c)
+            return "No triangle: triangle inequality is not satisfied."
+        return SSS(a, b, c)
 
-    elif UserInput == "2":
+    elif userInput == "2":
         print("You chose SAS")
         # Get sides and angles
-        a = GetInput("side", "a")
-        C = GetInput("angle", "C")
-        b = GetInput("side", "b")
+        a = get_input("side", "a")
+        C = get_input("angle", "C")
+        b = get_input("side", "b")
         # Check if sides are valid
         if a <= 0 or b <= 0:
-            TriangleInfo = "No triangle: one or more given sides are 0 or negative."
+            return "No triangle: one or more given sides are 0 or negative."
         # Check if angle is valid
-        elif C <= 0:
-            TriangleInfo = "No triangle: one or more given angles are too small or too big."
-        else:
-            TriangleInfo = SAS(a, C, b)
+        elif C <= 0 or C >= 180:
+            return "No triangle: one or more given angles are too small or too big."
+        return SAS(a, C, b)
 
-    elif UserInput == "3":
+    elif userInput == "3":
         print("You chose ASA")
         # Get sides and angles
-        A = GetInput("angle", "A")
-        c = GetInput("side", "c")
-        B = GetInput("angle", "B")
+        A = get_input("angle", "A")
+        c = get_input("side", "c")
+        B = get_input("angle", "B")
         # Check if side is valid
         if c <= 0:
-            TriangleInfo = "No triangle: one or more given sides are 0 or negative."
+            return "No triangle: one or more given sides are 0 or negative."
         # Check is angles are valid
         elif A <= 0 or B <= 0 or A + B >= 180:
-            TriangleInfo = "No triangle: one or more given angles are too small or too big."
-        else:
-            TriangleInfo = ASA(A, c, B)
+            return "No triangle: one or more given angles are too small or too big."
+        return ASA(A, c, B)
 
-    elif UserInput == "4":
+    elif userInput == "4":
         print("You chose AAS")
         # Get sides and angles
-        A = GetInput("angle", "A")
-        B = GetInput("angle", "B")
-        a = GetInput("side", "a")
+        A = get_input("angle", "A")
+        B = get_input("angle", "B")
+        a = get_input("side", "a")
         # Check is side is valid
         if a <= 0:
-            TriangleInfo = "No triangle: one or more given sides are 0 or negative."
+            return "No triangle: one or more given sides are 0 or negative."
         # Check is angles are valid
-        elif A <= 0 or B <= 0 or A + B >=180:
-            TriangleInfo = "No triangle: one or more given angles are too small or too big."
-        else:
-            TriangleInfo = AAS(A, B, a)
+        elif A <= 0 or B <= 0 or A + B >= 180:
+            return "No triangle: one or more given angles are too small or too big."
+        return AAS(A, B, a)
 
-    elif UserInput == "5": #TODO write SSA function, implement it and call it.
+    elif userInput == "5":
         print("You chose SSA")
         # Get sides and angles
-        a = GetInput("side", "a")
-        b = GetInput("side", "b")
-        A = GetInput("angle", "A")
+        a = get_input("side", "a")
+        b = get_input("side", "b")
+        A = get_input("angle", "A")
         # Calculate height of the triangle
-        h = Sin(A) * b
+        h = sin(A) * b
         # Check if sides are valid
         if a <= 0 or b <= 0:
-            TriangleInfo = "No triangle: one or more given sides are 0 or negative."
+            return "No triangle: one or more given sides are 0 or negative."
         # Check is angle is valid
-        elif A <= 0:
-            TriangleInfo = "No triangle: one or more given angles are too small or too big."
+        elif A <= 0 or A >= 180:
+            return "No triangle: one or more given angles are too small or too big."
         elif A > 90 and a <= b:
-            TriangleInfo = "No triangle: leg a is too short with that non-acute angle A."
+            return "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
-            TriangleInfo = "No triangle: leg a is shorter than the altitude from C"
+            return "No triangle: leg a is shorter than the altitude from C"
         elif a > h and a < b:
-            TriangleInfo = "Ambiguous case: two triangles can be formed with this information."
-        else:
-            TriangleInfo = SSA(a, b, A)
-
-    return TriangleInfo     # Return a list of the sides and angles or an error message
+            return "Ambiguous case: two triangles can be formed with this information."
+        return SSA(a, b, A)
 
 
 # TODO: format the function properly
-def Results(TriangleSummary):
-    if type(TriangleSummary) is str:
-        print(TriangleSummary)
+def Results(triangleSummary):
+    if type(triangleSummary) is str:
+        print(triangleSummary)
     else:
-        print("a:", TriangleSummary[0])
-        print("b:", TriangleSummary[1])
-        print("c:", TriangleSummary[2])
-        print("A:", TriangleSummary[3])
-        print("B:", TriangleSummary[4])
-        print("C:", TriangleSummary[5])
+        print("a:", triangleSummary[0])
+        print("b:", triangleSummary[1])
+        print("c:", triangleSummary[2])
+        print("A:", triangleSummary[3])
+        print("B:", triangleSummary[4])
+        print("C:", triangleSummary[5])
 
 
 ######  MAIN PROGRAM ######
@@ -280,8 +274,8 @@ selectedChoice = UserChoice()
 
 ## CALCULATIONS ##
 # get the triangle information based on user choice & then save triangle outcome (values or error) as variable
-TriangleSummary = SolveTriangle(selectedChoice)
+triangleSummary = SolveTriangle(selectedChoice)
 
 ## OUTPUTS ##
 # This prints the results of the triangle or an error message
-Results(TriangleSummary)
+Results(triangleSummary)
