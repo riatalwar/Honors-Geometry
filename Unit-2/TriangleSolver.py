@@ -248,8 +248,8 @@ def SolveTriangle(UserInput):
             TriangleInfo = "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
             TriangleInfo = "No triangle: leg a is shorter than the altitude from C"
-        elif a > h:
-            TriangleInfo: "Ambiguous case: two triangles can be formed with this information."
+        elif a > h and a < b:
+            TriangleInfo = "Ambiguous case: two triangles can be formed with this information."
         else:
             TriangleInfo = SSA(a, b, A)
 
