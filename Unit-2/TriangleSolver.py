@@ -47,7 +47,7 @@ def InverseSin(ratio):
     return: angle in degrees (float)
     """
     # I modified this for efficiency so that no variable is necessary
-    return math.degrees(math.asin(ratio))
+    return math.degrees(math.sin(ratio))
 
 
 # Triangle solver functions
@@ -234,7 +234,7 @@ def SolveTriangle(userInput):
         b = GetInput("side", "b")
         A = GetInput("angle", "A")
         # Calculate height of the triangle
-        h = sin(A) * b
+        h = round(Sin(A) * b, 2)
         # Check if sides are valid
         if a <= 0 or b <= 0:
             return "No triangle: one or more given sides are 0 or negative."
