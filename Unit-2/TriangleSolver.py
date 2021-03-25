@@ -117,8 +117,11 @@ def SSA(a, b, A):
     parameters: a = side, b = side, A = Angle
     return: list with the six triangle parts
     """
-    # do some lines of math
-    return [a, b, c, A, B, C]
+    # Use law of sines to get angle B
+    B = InverseSin(b * Sin(A) / a)
+    # Now we have all the information necessary for AAS
+    x = AAS(A, B, a)
+    return [a, b, x[2], A, B, x[5]]
 
 
 def Welcome():
