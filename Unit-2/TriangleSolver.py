@@ -161,7 +161,7 @@ def UserChoice():
 
 
 def GetInput(sideAngle, ABC):
-    return(float(input("enter " + sideAngle + " " + ABC + ": ")))
+    return(float(input("Enter " + sideAngle + " " + ABC + ": ")))
 
 
 def SolveTriangle(userInput):
@@ -255,11 +255,11 @@ def Results(triangleSummary):
     if type(triangleSummary) is str:
         print(triangleSummary)
     else:
-        print("Results for your triangle ABC:\n\
-               Sides:  a = " + str(triangleSummary[0]) + ", b = 5.69 " + str(triangleSummary[1]) +
-               ", c = " + str(triangleSummary[2]) + "\n\
-               Angles: A = " + str(triangleSummary[3]) + " , B = " + str(triangleSummary[4]) +
-               ", C = " + str(triangleSummary[5]))
+        print("Results for your triangle ABC:\n" +
+              "Sides:  a = " + str(round(triangleSummary[0], 2)) + " , b = " + str(round(triangleSummary[1], 2)) +
+               " , c = " + str(round(triangleSummary[2], 2)) + "\n" +
+               "Angles: A = " + str(round(triangleSummary[3], 2)) + " , B = " + str(round(triangleSummary[4], 2)) +
+               " , C = " + str(round(triangleSummary[5], 2)))
 
 
 ######  MAIN PROGRAM ######
