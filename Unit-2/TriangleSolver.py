@@ -47,7 +47,7 @@ def InverseSin(ratio):
     return: angle in degrees (float)
     """
     # I modified this for efficiency so that no variable is necessary
-    return math.degrees(math.sin(ratio))
+    return math.degrees(math.asin(ratio))
 
 
 # Triangle solver functions
@@ -244,7 +244,7 @@ def SolveTriangle(userInput):
         elif A > 90 and a <= b:
             return "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
-            return "No triangle: leg a is shorter than the altitude from C"
+            return "No triangle: leg a is shorter than the altitude from C."
         elif a > h and a < b:
             return "Ambiguous case: two triangles can be formed with this information."
         return SSA(a, b, A)
