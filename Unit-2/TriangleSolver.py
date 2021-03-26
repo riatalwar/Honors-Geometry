@@ -252,11 +252,11 @@ def SolveTriangle(userInput):
 
 # TODO: format the function properly
 def Results(triangleSummary):
+    print("Results for your triangle ABC:")
     if type(triangleSummary) is str:
         print(triangleSummary)
     else:
-        print("Results for your triangle ABC:\n" +
-              "Sides:  a = " + str(round(triangleSummary[0], 2)) + " , b = " + str(round(triangleSummary[1], 2)) +
+        print("Sides:  a = " + str(round(triangleSummary[0], 2)) + " , b = " + str(round(triangleSummary[1], 2)) +
                " , c = " + str(round(triangleSummary[2], 2)) + "\n" +
                "Angles: A = " + str(round(triangleSummary[3], 2)) + " , B = " + str(round(triangleSummary[4], 2)) +
                " , C = " + str(round(triangleSummary[5], 2)))
