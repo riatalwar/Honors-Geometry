@@ -250,7 +250,6 @@ def SolveTriangle(userInput):
         return SSA(a, b, A)
 
 
-# TODO: format the function properly
 def Results(triangleSummary):
     print("Results for your triangle ABC:")
     if type(triangleSummary) is str:
