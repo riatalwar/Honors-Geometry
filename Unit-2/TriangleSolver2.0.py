@@ -269,6 +269,11 @@ def Results(triangleSummary):
 
 
 def Play():
+    """
+    Runs the program
+    parameters: none
+    return: none
+    """
     # Get a triangle case from the user
     selectedChoice = UserChoice()
 
@@ -280,11 +285,18 @@ def Play():
     # This prints the results of the triangle or an error message
     Results(triangleSummary)
 
+    # Asks user if they want to play again
     PlayAgain()
 
 
 def PlayAgain():
+    """
+    Asks user if they want to play again
+    parameters: none
+    return: none
+    """
     print()
+    # Asks user if they want to play again and call Play() if they do
     if input("Do you want to play again? ").lower()[0] == 'y':
         print()
         Play()
