@@ -250,7 +250,6 @@ def SolveTriangle(userInput):
         return SSA(a, b, A)
 
 
-# TODO: format the function properly
 def Results(triangleSummary):
     print("Results for your triangle ABC:")
     if type(triangleSummary) is str:
@@ -262,19 +261,31 @@ def Results(triangleSummary):
                " , C = " + str(round(triangleSummary[5], 2)))
 
 
+def Play():
+    # Get a triangle case from the user
+    selectedChoice = UserChoice()
+
+    ## CALCULATIONS ##
+    # get the triangle information based on user choice & then save triangle outcome (values or error) as variable
+    triangleSummary = SolveTriangle(selectedChoice)
+
+    ## OUTPUTS ##
+    # This prints the results of the triangle or an error message
+    Results(triangleSummary)
+
+    PlayAgain()
+
+
+def PlayAgain():
+    print()
+    if input("Do you want to play again? ").lower()[0] == 'y':
+        print()
+        Play()
+
 ######  MAIN PROGRAM ######
 
 # Program summary & a menu of options (triangle cases)
 Welcome()
 
 ## INPUTS ##
-# Get a triangle case from the user
-selectedChoice = UserChoice()
-
-## CALCULATIONS ##
-# get the triangle information based on user choice & then save triangle outcome (values or error) as variable
-triangleSummary = SolveTriangle(selectedChoice)
-
-## OUTPUTS ##
-# This prints the results of the triangle or an error message
-Results(triangleSummary)
+Play()
