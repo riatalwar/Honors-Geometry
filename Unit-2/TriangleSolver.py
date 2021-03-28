@@ -99,7 +99,7 @@ def AAS(A, B, a):
 def SAS(a, C, b):
     """
     Calculates missing angles and sides in valid ASA scenarios
-    parameters: a = side, C = anfle, b = side
+    parameters: a = side, C = angle, b = side
     return: list with the six triangle parts
     """
     # Use law of cosines to solve for side c
@@ -251,9 +251,16 @@ def SolveTriangle(userInput):
 
 
 def Results(triangleSummary):
+    """
+    Prints the results of the triangle with proper formatting
+    parameters: triangleSummary (string or list)
+    return: none
+    """
     print("Results for your triangle ABC:")
+    # Prints error message is triangleSummary is a string
     if type(triangleSummary) is str:
         print(triangleSummary)
+    # Prints the results with proper formatting
     else:
         print("Sides:  a = " + str(round(triangleSummary[0], 2)) + " , b = " + str(round(triangleSummary[1], 2)) +
                " , c = " + str(round(triangleSummary[2], 2)) + "\n" +
