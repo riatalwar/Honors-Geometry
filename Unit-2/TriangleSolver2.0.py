@@ -110,7 +110,7 @@ def SAS(a, C, b):
     return [a, b, c, x[3], x[4], C]
 
 
-def SSA(a, b, A):
+def SSA(a, b, A, ambiguous=False):
     """
     Calculates missing angles and sides in valid SSA scenarios
     parameters: a = side, b = side, A = Angle
@@ -120,6 +120,13 @@ def SSA(a, b, A):
     B = InverseSin(b * Sin(A) / a)
     # Now we have all the information necessary for AAS
     x = AAS(A, B, a)
+    # Calculates a second triangle if ambiguous
+    if ambiguous:
+        B2 = 180 - B
+        C2 = 180 - B2 - A
+        c2 = (a ** 2 + b ** 2 - 2 * a * b * Cos(C2))
+        return [[a, b, x[2], A, B, x[5]], [a, b, c2, A, B2, C2]]
+
     return [a, b, x[2], A, B, x[5]]
 
 
@@ -254,8 +261,8 @@ def SolveTriangle(userInput):
             return "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
             return "No triangle: leg a is shorter than the altitude from C."
-        elif a > h and a < b:
-            return "Ambiguous case: two triangles can be formed with this information."
+        elif a > h and a < b: # Ambiguous case
+            return SSA(a, b, A, ambiguous=True)
         return SSA(a, b, A)
 
 
@@ -283,6 +290,7 @@ def Play():
     parameters: none
     return: none
     """
+    ## INPUTS ##
     # Get a triangle case from the user
     selectedChoice = UserChoice()
 
@@ -292,7 +300,12 @@ def Play():
 
     ## OUTPUTS ##
     # This prints the results of the triangle or an error message
-    Results(triangleSummary)
+    # The ambiguous case
+    if type(triangleSummary) == list and len(triangleSummary) == 2:
+        Results(triangleSummary[0])
+        Results(triangleSummary[1])
+    else:
+        Results(triangleSummary)
 
     # Asks user if they want to play again
     PlayAgain()
@@ -315,5 +328,4 @@ def PlayAgain():
 # Program summary & a menu of options (triangle cases)
 Welcome()
 
-## INPUTS ##
 Play()
