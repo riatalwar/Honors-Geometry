@@ -6,6 +6,7 @@
 
 ## IMPORT LIBRARIES/MODULES ##
 import math
+import turtle
 
 ## FUNCTIONS ##
 
@@ -123,8 +124,8 @@ def SSA(a, b, A, ambiguous=False):
     # Calculates a second triangle if ambiguous
     if ambiguous:
         B2 = 180 - B
-        C2 = 180 - B2 - A
-        c2 = (a ** 2 + b ** 2 - 2 * a * b * Cos(C2))
+        C2 = 180 - A - B2
+        c2 = (a ** 2 + b ** 2 - 2 * a * b * Cos(C2)) ** (1/2)
         return [[a, b, x[2], A, B, x[5]], [a, b, c2, A, B2, C2]]
 
     return [a, b, x[2], A, B, x[5]]
@@ -257,6 +258,7 @@ def SolveTriangle(userInput):
         # Check is angle is valid
         elif A <= 0 or A >= 180:
             return "No triangle: one or more given angles are too small or too big."
+        # Ensure that the triangle is possible
         elif A > 90 and a <= b:
             return "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
@@ -284,6 +286,23 @@ def Results(triangleSummary):
                " , C = " + str(round(triangleSummary[5], 2)))
 
 
+def TurtleDraw(triangleSummary):
+    """
+    Uses turtle to draw a triangle based on triangleSummary
+    parameters: triangleSummary (list)
+    return: none
+    """
+    # TODO: debug function -- right now this crashes when the user runs the program twice (enters two triangles)
+    wn = turtle.Screen()
+    jerry = turtle.Turtle()
+    angleIndex = [5, 3, 4]
+    for i in range(3):
+        jerry.forward(triangleSummary[i] * 20)
+        jerry.left(180 - triangleSummary[angleIndex[i]])
+    input("Press ENTER to continue.")
+    wn.clear()
+
+
 def Play():
     """
     Runs the program
@@ -303,9 +322,13 @@ def Play():
     # The ambiguous case
     if type(triangleSummary) == list and len(triangleSummary) == 2:
         Results(triangleSummary[0])
+        TurtleDraw(triangleSummary[0])
+        print("The Ambiguous Case:")
         Results(triangleSummary[1])
+        TurtleDraw(triangleSummary[1])
     else:
         Results(triangleSummary)
+        TurtleDraw(triangleSummary)
 
     # Asks user if they want to play again
     PlayAgain()
