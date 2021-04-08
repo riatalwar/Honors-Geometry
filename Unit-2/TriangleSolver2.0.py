@@ -125,9 +125,12 @@ def SSA(a, b, A, ambiguous=False):
     if ambiguous:
         B2 = 180 - B
         C2 = 180 - A - B2
+        # Use sides and angles to calculate the final side using law of cosines
         c2 = (a ** 2 + b ** 2 - 2 * a * b * Cos(C2)) ** (1/2)
+        # Return both cases
         return [[a, b, x[2], A, B, x[5]], [a, b, c2, A, B2, C2]]
 
+    # Return one case if not ambiguous
     return [a, b, x[2], A, B, x[5]]
 
 
@@ -268,6 +271,22 @@ def SolveTriangle(userInput):
         return SSA(a, b, A)
 
 
+def TurtleDraw(triangleSummary):
+    """
+    Uses turtle to draw a triangle based on triangleSummary
+    parameters: triangleSummary (list)
+    return: none
+    """
+    wn = turtle.Screen()    # Create window
+    jerry = turtle.Turtle() # Create Turtle
+    angleIndex = [5, 3, 4]  # The order in which the angles are used
+    for i in range(3):      # Draw each side
+        jerry.forward(triangleSummary[i] * 20)
+        jerry.left(180 - triangleSummary[angleIndex[i]])
+    input("Press ENTER to continue.")
+    wn.clear()              # Clear window
+
+
 def Results(triangleSummary):
     """
     Prints the results of the triangle with proper formatting
@@ -284,23 +303,7 @@ def Results(triangleSummary):
                " , c = " + str(round(triangleSummary[2], 2)) + "\n" +
                "Angles: A = " + str(round(triangleSummary[3], 2)) + " , B = " + str(round(triangleSummary[4], 2)) +
                " , C = " + str(round(triangleSummary[5], 2)))
-
-
-def TurtleDraw(triangleSummary):
-    """
-    Uses turtle to draw a triangle based on triangleSummary
-    parameters: triangleSummary (list)
-    return: none
-    """
-    # TODO: debug function -- right now this crashes when the user runs the program twice (enters two triangles)
-    wn = turtle.Screen()
-    jerry = turtle.Turtle()
-    angleIndex = [5, 3, 4]
-    for i in range(3):
-        jerry.forward(triangleSummary[i] * 20)
-        jerry.left(180 - triangleSummary[angleIndex[i]])
-    input("Press ENTER to continue.")
-    wn.clear()
+        TurtleDraw(triangleSummary) # Draw turtle
 
 
 def Play():
@@ -321,14 +324,11 @@ def Play():
     # This prints the results of the triangle or an error message
     # The ambiguous case
     if type(triangleSummary) == list and len(triangleSummary) == 2:
-        Results(triangleSummary[0])
-        TurtleDraw(triangleSummary[0])
         print("The Ambiguous Case:")
+        Results(triangleSummary[0])
         Results(triangleSummary[1])
-        TurtleDraw(triangleSummary[1])
     else:
         Results(triangleSummary)
-        TurtleDraw(triangleSummary)
 
     # Asks user if they want to play again
     PlayAgain()
