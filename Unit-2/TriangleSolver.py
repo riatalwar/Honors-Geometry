@@ -241,10 +241,12 @@ def SolveTriangle(userInput):
         # Check is angle is valid
         elif A <= 0 or A >= 180:
             return "No triangle: one or more given angles are too small or too big."
+        # Ensure that the triangle is possible
         elif A > 90 and a <= b:
             return "No triangle: leg a is too short with that non-acute angle A."
         elif a < h:
             return "No triangle: leg a is shorter than the altitude from C."
+        # Does not work with the ambiguous case
         elif a > h and a < b:
             return "Ambiguous case: two triangles can be formed with this information."
         return SSA(a, b, A)
