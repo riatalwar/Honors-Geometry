@@ -341,6 +341,7 @@ def Play():
     if type(triangleSummary) == list and len(triangleSummary) == 2:
         print("The Ambiguous Case:")
         Results(triangleSummary[0])
+        print()
         Results(triangleSummary[1])
     else:
         Results(triangleSummary)
