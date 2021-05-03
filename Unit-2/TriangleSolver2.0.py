@@ -287,6 +287,17 @@ def TurtleDraw(triangleSummary):
     wn.clear()              # Clear window
 
 
+def AreaPerimeter(triangleSummary):
+    """
+    Prints the results of the triangle with proper formatting
+    parameters: triangleSummary (list)
+    return: area, perimeter (int)
+    """
+    area = 0.5 * triangleSummary[0] * triangleSummary[1] * Sin(triangleSummary[5])
+    perimeter = triangleSummary[0] + triangleSummary[1] + triangleSummary[2]
+    return area, perimeter
+
+
 def Results(triangleSummary):
     """
     Prints the results of the triangle with proper formatting
@@ -304,6 +315,10 @@ def Results(triangleSummary):
                "Angles: A = " + str(round(triangleSummary[3], 2)) + " , B = " + str(round(triangleSummary[4], 2)) +
                " , C = " + str(round(triangleSummary[5], 2)))
         TurtleDraw(triangleSummary) # Draw turtle
+
+        if input("Do you want the area and perimeter of the triangle? ").lower()[0] == 'y':
+            area, perimeter = AreaPerimeter(triangleSummary)
+            print("Area:", round(area, 2), "\nPerimeter:", round(perimeter, 2))
 
 
 def Play():
